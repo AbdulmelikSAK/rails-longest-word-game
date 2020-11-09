@@ -1,0 +1,21 @@
+<% if session[:score].nil?
+     session[:score] = 0
+   end
+%>
+
+<h1>New game</h1>
+
+<ul ></ul>
+  <% @letters.each do |letter| %>
+    <li style="display:inline;"><%= letter %></li>
+  <% end %>
+</ul>
+
+
+<form action="/score" method="POST">
+<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <label for="name">Whats is the longest word you can find ?</label>
+  <input type="text" placeholder="word" name="word">
+  <%= hidden_field_tag 'letters', @letters %>
+  <input type="submit" value="Play">
+</form>

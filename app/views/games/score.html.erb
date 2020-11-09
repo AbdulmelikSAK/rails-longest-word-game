@@ -1,0 +1,16 @@
+<h1>Result</h1>
+
+<% if (@valid) %>
+  <% wie = @word_is_english %>
+  <% if wie[:found] %>
+    <p><strong>Congratulations!</strong> <%= wie[:word]%> is a valid English word!</p>
+      <% @session %>
+    <% else %>
+      <p>Sorry but <strong><%= wie[:word] %></strong> does not seem to be a valid English word...</p>
+  <% end %>
+<% else %>
+  <p>Sorry but <%= @word %> can't be build out of <%= @letters %></p>
+<% end %>
+
+<h2>Your actual score is <%= session[:score] %></h2>
+<%= link_to "Play again", new_path %>
