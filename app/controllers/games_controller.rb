@@ -15,7 +15,6 @@ class GamesController < ApplicationController
     @word = params[:word]
     @valid = valid?(@word, @letters)
     @word_is_english = word_is_english(@word)
-    @session = score_increment(@word_is_english)
     # raise
   end
 
@@ -36,9 +35,5 @@ class GamesController < ApplicationController
       length: word_english["length"],
       word: word_english["word"]
     }
-  end
-
-  def score_increment(word)
-    session[:score] += word[:length] ** 2
   end
 end

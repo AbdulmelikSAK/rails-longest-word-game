@@ -4,7 +4,7 @@
   <% wie = @word_is_english %>
   <% if wie[:found] %>
     <p><strong>Congratulations!</strong> <%= wie[:word]%> is a valid English word!</p>
-      <% @session %>
+      <% session[:score] += word[:length]**2 %>
     <% else %>
       <p>Sorry but <strong><%= wie[:word] %></strong> does not seem to be a valid English word...</p>
   <% end %>
